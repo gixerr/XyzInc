@@ -1,6 +1,8 @@
+using System.Runtime.CompilerServices;
 using XyzInc.Application.Exceptions;
 using XyzInc.Core.Domain;
 
+[assembly: InternalsVisibleTo("XyzInc.UnitTests")]
 namespace XyzInc.Application.Validators;
 
 class OrderValidator : IOrderValidator
@@ -12,7 +14,7 @@ class OrderValidator : IOrderValidator
             throw new AppException("Provided invalid user ID. User ID cannot be default value of Guid.");
         }
 
-        if (order.OrderNumber.Equals(default) || order.OrderNumber < 0)
+        if (order.OrderNumber <= 0)
         {
             throw new AppException("Invalid order number. Order number must be greater than 0.");
         }
