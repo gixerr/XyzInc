@@ -3,7 +3,7 @@ using XyzInc.Core.Domain;
 
 namespace XyzInc.Application.Gateways;
 
-public class UnitedStatesPaymentGateway : IPaymentGateway
+internal class UnitedStatesPaymentGateway : IPaymentGateway
 {
     private readonly IOrderValidator _orderValidator;
 
