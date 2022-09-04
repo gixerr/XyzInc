@@ -1,0 +1,16 @@
+@baseUrl = http://localhost:5000
+
+###
+GET {{baseUrl}}
+
+###
+POST {{baseUrl}}/orders
+Content-Type: application/json
+
+{
+    "orderNumber": 123,
+    "userId": "94675f7a-ab72-4774-aba3-5453c592edf4",
+    "payableAmount": 100,
+    "paymentGatewayId": 1,
+    "description": "test"
+}
