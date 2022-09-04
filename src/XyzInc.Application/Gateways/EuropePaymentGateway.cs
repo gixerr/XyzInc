@@ -1,7 +1,9 @@
+using System.Runtime.CompilerServices;
 using XyzInc.Application.Exceptions;
 using XyzInc.Application.Validators;
 using XyzInc.Core.Domain;
 
+[assembly: InternalsVisibleTo("XyzInc.UnitTests")]
 namespace XyzInc.Application.Gateways;
 
 internal class EuropePaymentGateway : IPaymentGateway

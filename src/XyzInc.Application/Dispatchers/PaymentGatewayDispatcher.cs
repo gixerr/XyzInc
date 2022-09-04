@@ -1,7 +1,9 @@
+using System.Runtime.CompilerServices;
 using Microsoft.Extensions.DependencyInjection;
 using XyzInc.Application.Exceptions;
 using XyzInc.Application.Gateways;
 
+[assembly: InternalsVisibleTo("XyzInc.UnitTests")]
 namespace XyzInc.Application.Dispatchers;
 
 internal class PaymentGatewayDispatcher : IPaymentGatewayDispatcher

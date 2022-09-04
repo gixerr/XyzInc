@@ -1,8 +1,10 @@
+using System.Runtime.CompilerServices;
 using XyzInc.Application.Dispatchers;
 using XyzInc.Application.DTO;
 using XyzInc.Application.Exceptions;
 using XyzInc.Core.Domain;
 
+[assembly:InternalsVisibleTo("XyzInc.UnitTests")]
 namespace XyzInc.Application.Services;
 
 internal class OrderService : IOrderService
