@@ -10,15 +10,15 @@ internal class PaymentGatewayDispatcher : IPaymentGatewayDispatcher
 {
     private readonly IServiceProvider _serviceProvider;
 
-    private readonly Dictionary<int, IPaymentGateway> _paymentGatewayDispatch;
+    private readonly Dictionary<int, Func<IPaymentGateway>> _paymentGatewayDispatch;
 
     public PaymentGatewayDispatcher(IServiceProvider serviceProvider)
     {
         _serviceProvider = serviceProvider;
-        _paymentGatewayDispatch = new Dictionary<int, IPaymentGateway>()
+        _paymentGatewayDispatch = new Dictionary<int, Func<IPaymentGateway>>()
         {
-            [1] = GetPaymentGateway<EuropePaymentGateway>(),
-            [2] = GetPaymentGateway<UnitedStatesPaymentGateway>()
+            [1] = GetPaymentGateway<EuropePaymentGateway>,
+            [2] = GetPaymentGateway<UnitedStatesPaymentGateway>
         };
     }
    
@@ -28,7 +28,7 @@ internal class PaymentGatewayDispatcher : IPaymentGatewayDispatcher
         {
             throw new AppException($"Invalid gateway ID. Provided ID in request: {paymentGatewayId}.");
         }
-        return _paymentGatewayDispatch[paymentGatewayId];
+        return _paymentGatewayDispatch[paymentGatewayId].Invoke();
     }
 
     private IPaymentGateway GetPaymentGateway<T>() where T : IPaymentGateway
