@@ -18,6 +18,6 @@ public class OrdersController : BaseController
     {
         var receipt = _orderService.ProcessOrder(orderPostDto);
 
-        return Created("", receipt);
+        return Ok(receipt);
     }
 }
