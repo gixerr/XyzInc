@@ -22,7 +22,8 @@ internal class UnitedStatesPaymentGateway : IPaymentGateway
         Receipt receipt = new()
         {
             DateIssued = DateTime.UtcNow,
-            AmountToPay = order.PayableAmount
+            AmountToPay = order.PayableAmount,
+            Description = order.Description
         };
 
         return receipt;
